@@ -3,18 +3,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single"
+        android:title="abc"  >
+
+
+        <item
+            android:id="@+id/hsst2016"
+            android:checkable="true"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="HSST 2016 SR For SC/ST">
+            <menu
+
+                >
+                <item
+                    android:id="@+id/hsst2016m1"
+                    android:title="Module 1"
+                    android:onClick="HSST2016ModuleItemClicked"
+                    />
+
+                <item
+                    android:id="@+id/hsst2016m2"
+                    android:title="Module 2"
+                    android:onClick="HSST2016ModuleItemClicked"
+
+                    />
+                <item
+                    android:id="@+id/hsst2016m3"
+                    android:title="Module 3"
+                    android:onClick="HSST2016ModuleItemClicked"
+
+                    />
+                <item
+                    android:id="@+id/hsst2016m4"
+                    android:title="Module 4"
+                    android:onClick="HSST2016ModuleItemClicked"
+
+                    />
+                <item
+                    android:id="@+id/hsst2016m5"
+                    android:title="Module 5"
+                    android:onClick="HSST2016ModuleItemClicked"
+
+                    />
+                <item
+                    android:id="@+id/TutorialLinks"
+                    android:icon="@drawable/ic_menu_slideshow"
+                    android:title="Tutorial videos" />
+            </menu>
+        </item>
+
         <item
             android:id="@+id/nav_home"
+            android:checkable="true"
             android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="Lecturer In IT 2013">
+            <menu
+
+                >
+                <item
+                    android:id="@+id/LecturerIT2013m1"
+                    android:title="Module 1"
+                    android:onClick="LecturerIT2013ModuleItemClicked"
+                    />
+
+                <item
+                    android:id="@+id/LecturerIT2013m2"
+                    android:title="Module 2"
+                    android:onClick="LecturerIT2013ModuleItemClicked"
+
+                    />
+                <item
+                    android:id="@+id/LecturerIT2013m3"
+                    android:title="Module 3"
+                    android:onClick="LecturerIT2013ModuleItemClicked"
+
+                    />
+                <item
+                    android:id="@+id/LecturerIT2013m4"
+                    android:title="Module 4"
+                    android:onClick="LecturerIT2013ModuleItemClicked"
+
+                    />
+                <item
+                    android:id="@+id/LecturerIT2013m5"
+                    android:title="Module 5"
+                    android:onClick="LecturerIT2013ModuleItemClicked"
+
+                    />
+                <item
+                    android:id="@+id/TutorialLinks1"
+                    android:icon="@drawable/ic_menu_slideshow"
+                    android:title="Tutorial videos" />
+            </menu>
+        </item>
+
     </group>
+
+
 </menu>

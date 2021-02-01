@@ -12,7 +12,10 @@
         <activity
             android:name=".QuestionDisplayActivity"
             android:label="@string/title_activity_question_display"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+
+
+        </activity>
         <activity android:name=".SignUp"></activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -22,5 +25,5 @@
             </intent-filter>
         </activity>
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

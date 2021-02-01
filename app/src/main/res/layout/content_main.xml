@@ -21,29 +21,129 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation" />
-
-    <io.github.kexanie.library.MathView
-        android:id="@+id/formula_one"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        auto:engine="MathJax"
-        auto:text="When \\(a \\ne 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\)
-        and they are $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$"> </io.github.kexanie.library.MathView>
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/buttonNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="84dp"
-        android:text="Next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <Button
+                android:id="@+id/buttonNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:onClick="nextClicked"
+                android:text="Next"
+                app:layout_constraintTop_toBottomOf="@+id/radio_group"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="50dp" />
+
+            <Button
+                android:id="@+id/buttonBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:gravity="left"
+                android:onClick="backClicked"
+                android:text="Back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radio_group" />
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+
+
+                app:layout_constraintTop_toBottomOf="@id/mathViewOptionD">
+
+                <RadioButton
+                    android:id="@+id/radio_a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="A        " />
+
+                <RadioButton
+                    android:id="@+id/radio_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="B        " />
+
+                <RadioButton
+                    android:id="@+id/radio_c"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="C        " />
+
+                <RadioButton
+                    android:id="@+id/radio_d"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="D        " />
+
+            </RadioGroup>
+
+            <io.github.kexanie.library.MathView
+                android:id="@+id/mathViewDisp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbarAlwaysDrawHorizontalTrack="true"
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                app:layout_constraintTop_toTopOf="parent"
+                auto:engine="MathJax" />
+
+            <io.github.kexanie.library.MathView
+                android:id="@+id/mathViewOptionA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbarAlwaysDrawHorizontalTrack="true"
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                app:layout_constraintTop_toBottomOf="@id/mathViewDisp"
+                auto:engine="MathJax"></io.github.kexanie.library.MathView>
+
+
+            <io.github.kexanie.library.MathView
+                android:id="@+id/mathViewOptionB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbarAlwaysDrawHorizontalTrack="true"
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                app:layout_constraintTop_toBottomOf="@id/mathViewOptionA"
+                auto:engine="MathJax" />
+
+            <io.github.kexanie.library.MathView
+                android:id="@+id/mathViewOptionC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbarAlwaysDrawHorizontalTrack="true"
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                app:layout_constraintTop_toBottomOf="@id/mathViewOptionB"
+                auto:engine="MathJax" />
+
+            <io.github.kexanie.library.MathView
+                android:id="@+id/mathViewOptionD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbarAlwaysDrawHorizontalTrack="true"
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                app:layout_constraintTop_toBottomOf="@id/mathViewOptionC"
+                auto:engine="MathJax" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
 
 
