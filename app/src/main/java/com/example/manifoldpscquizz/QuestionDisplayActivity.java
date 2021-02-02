@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.ExpandableListView;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.android.gms.common.internal.service.Common;
@@ -42,6 +43,7 @@ public class QuestionDisplayActivity extends AppCompatActivity implements Naviga
     public static ArrayList<Question> qList = new ArrayList<Question>();
     public static ArrayList<String> qKeyList = new ArrayList<String>();
     public static  String testPath ;
+    public static  int choiceArray[];
     public  static Integer questionPointer;
 
 
@@ -197,6 +199,22 @@ public class QuestionDisplayActivity extends AppCompatActivity implements Naviga
         MathView mathViewOptionB = findViewById(R.id.mathViewOptionB);
         MathView mathViewOptionC = findViewById(R.id.mathViewOptionC);
         MathView mathViewOptionD = findViewById(R.id.mathViewOptionD);
+        RadioButton rBa=findViewById(R.id.radio_a) ;
+        RadioButton rBb=findViewById(R.id.radio_b) ;
+        RadioButton rBc=findViewById(R.id.radio_c) ;
+        RadioButton rBd=findViewById(R.id.radio_d) ;
+        rBa.setChecked(false);
+        rBb.setChecked(false);
+        rBc.setChecked(false);
+        rBd.setChecked(false);
+
+        switch(choiceArray[questionPointer]){
+            case 1:rBa.setChecked(true);break;
+            case 2:rBb.setChecked(true);break;
+            case 3:rBc.setChecked(true);break;
+            case 4:rBd.setChecked(true);break;
+        }
+
         mathViewDisp.setText("\\( \\mathbf {" +(questionPointer+1) + " .}  \\)" + firstQ.question);
         mathViewOptionA.setText("\\( \\mathbb {A .}  \\)"+ firstQ.option_a);
         mathViewOptionB.setText("\\( \\mathbb {B .}  \\)"+ firstQ.option_b);
@@ -227,7 +245,7 @@ public class QuestionDisplayActivity extends AppCompatActivity implements Naviga
                     }
 
                     questionPointer=0;
-
+                    choiceArray=new int[qList.size()] ;
                     Question firstQ=qList.get(questionPointer);
                     displayQuestionFunction(firstQ);
                 }
@@ -262,6 +280,33 @@ public class QuestionDisplayActivity extends AppCompatActivity implements Naviga
         }
 
     }
+    public void finishClicked(View view) {
+        int moduleScore=0;
+for(int i=0;i<qList.size();i++){
+    int ai=0;
+    Question qi=qList.get(i);
+    switch (qi.answer){
+        case " A":ai=1;break;
+        case " B":ai=2;break;
+        case " C":ai=3;break;
+        case " D":ai=4;break;
+    }
+if(ai==choiceArray[i]){
+    moduleScore++;
+}
+
+
+
+}
+        Context context = getApplicationContext();
+        CharSequence text = "Your Score In this Module : "+ moduleScore ;
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
+
+    }
     public void backClicked(View view) {
 
         // questionPointer=questionPointer+1;
@@ -271,5 +316,35 @@ public class QuestionDisplayActivity extends AppCompatActivity implements Naviga
             displayQuestionFunction(firstQ);
         }
 
+    }
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.radio_a:
+                if (checked)
+                    // a
+                    choiceArray[questionPointer]=1;
+                    break;
+            case R.id.radio_b:
+                if (checked)
+                    // b
+                    choiceArray[questionPointer]=2;
+                    break;
+            case R.id.radio_c:
+                if (checked)
+                    // c
+                    choiceArray[questionPointer]=3;
+                    break;
+            case R.id.radio_d:
+                if (checked)
+                    // d
+                    choiceArray[questionPointer]=4;
+                    break;
+        }
+
+        Log.d("Radio Clicked","--> "+ choiceArray[questionPointer] );
     }
 }
