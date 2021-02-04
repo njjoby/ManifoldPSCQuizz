@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.ExpandableListView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.common.internal.service.Common;
@@ -199,21 +200,22 @@ public class QuestionDisplayActivity extends AppCompatActivity implements Naviga
         MathView mathViewOptionB = findViewById(R.id.mathViewOptionB);
         MathView mathViewOptionC = findViewById(R.id.mathViewOptionC);
         MathView mathViewOptionD = findViewById(R.id.mathViewOptionD);
+
         RadioButton rBa=findViewById(R.id.radio_a) ;
         RadioButton rBb=findViewById(R.id.radio_b) ;
         RadioButton rBc=findViewById(R.id.radio_c) ;
         RadioButton rBd=findViewById(R.id.radio_d) ;
-        rBa.setChecked(false);
-        rBb.setChecked(false);
-        rBc.setChecked(false);
-        rBd.setChecked(false);
+
+       // rBa.setChecked(false);rBb.setChecked(false);rBc.setChecked(false);rBd.setChecked(false);
 
         switch(choiceArray[questionPointer]){
             case 1:rBa.setChecked(true);break;
             case 2:rBb.setChecked(true);break;
             case 3:rBc.setChecked(true);break;
             case 4:rBd.setChecked(true);break;
+
         }
+        Log.d("displayQuestionFunction", "Insided isplayQuestionFunction " + questionPointer  + " " + choiceArray[questionPointer] );
 
         mathViewDisp.setText("\\( \\mathbf {" +(questionPointer+1) + " .}  \\)" + firstQ.question);
         mathViewOptionA.setText("\\( \\mathbb {A .}  \\)"+ firstQ.option_a);
@@ -271,14 +273,23 @@ public class QuestionDisplayActivity extends AppCompatActivity implements Naviga
 
 
         // questionPointer=questionPointer+1;
-        Log.d("Inside next clicked ", "Inside next clicked " + qList.size() );
-
+        Log.d("Inside Next clicked ", "Inside Next clicked before " + questionPointer  );
+        RadioGroup radioGroup=findViewById(R.id.radio_group);
         if(questionPointer<qList.size()-1){
+
+            RadioButton rBa=findViewById(R.id.radio_a) ;
+            RadioButton rBb=findViewById(R.id.radio_b) ;
+            RadioButton rBc=findViewById(R.id.radio_c) ;
+            RadioButton rBd=findViewById(R.id.radio_d) ;
+
+
             ++questionPointer;
             Question firstQ=qList.get(questionPointer);
+            radioGroup.clearCheck();
             displayQuestionFunction(firstQ);
-        }
 
+        }
+        Log.d("Inside Next clicked ", "Inside Next clicked before " + questionPointer  + " " + choiceArray[questionPointer] );
     }
     public void finishClicked(View view) {
         int moduleScore=0;
@@ -308,14 +319,24 @@ if(ai==choiceArray[i]){
 
     }
     public void backClicked(View view) {
-
+        RadioGroup radioGroup=findViewById(R.id.radio_group);
         // questionPointer=questionPointer+1;
-        Log.d("Inside Back clicked ", "Inside next clicked " + qList.size() );
+        Log.d("Inside Back clicked ", "Inside back clicked before " + questionPointer  );
         if(questionPointer>0){
-            Question firstQ=qList.get(--questionPointer);
+
+            RadioButton rBa=findViewById(R.id.radio_a) ;
+            RadioButton rBb=findViewById(R.id.radio_b) ;
+            RadioButton rBc=findViewById(R.id.radio_c) ;
+            RadioButton rBd=findViewById(R.id.radio_d) ;
+
+
+
+            --questionPointer;
+            Question firstQ=qList.get(questionPointer);
+            radioGroup.clearCheck();
             displayQuestionFunction(firstQ);
         }
-
+        Log.d("Inside Back clicked ", "Inside back clicked  After " + questionPointer + " " + choiceArray[questionPointer]);
     }
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
