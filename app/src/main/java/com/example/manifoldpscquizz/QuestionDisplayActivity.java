@@ -44,8 +44,10 @@ public class QuestionDisplayActivity extends AppCompatActivity implements Naviga
     public static ArrayList<Question> qList = new ArrayList<Question>();
     public static ArrayList<String> qKeyList = new ArrayList<String>();
     public static  String testPath ;
-    public static  int choiceArray[];
+    public   int choiceArray[];
     public  static Integer questionPointer;
+    public String currentModulePath;
+    public LogedInUser liu;
 
 
 
@@ -57,11 +59,44 @@ public class QuestionDisplayActivity extends AppCompatActivity implements Naviga
         // list view trial
 
         Intent i = getIntent();
-        LogedInUser liu = (LogedInUser)i.getSerializableExtra("currentUserLogedIn");
+         liu = (LogedInUser)i.getSerializableExtra("currentUserLogedIn");
         Log.d("TAG", "Value is qwerty : " + liu.user.email);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+ if (qList.size()==0){
+     FirebaseDatabase database = FirebaseDatabase.getInstance();
+     DatabaseReference myRef = database.getReference("UserProgression/"+liu.user.name+liu.user.phone+"/CurrentModule");
+
+// Read from the database
+     myRef.addValueEventListener(new ValueEventListener() {
+         @Override
+         public void onDataChange(DataSnapshot dataSnapshot) {
+             // This method is called once with the initial value and again
+             // whenever data at this location is updated.
+             String modulePath = dataSnapshot.getValue(String.class);
+             Log.d("TAG", "Value is: " + modulePath);
+             if(modulePath==null){
+                 modulePath="PSC/HSST_2016/M1";
+                 Log.d("TAG", "New Value is: " + modulePath);
+             }
+             loadModuleAndDisplay(modulePath);
+         }
+
+         @Override
+         public void onCancelled(DatabaseError error) {
+             // Failed to read value
+             Log.w("TAG", "Failed to read value.", error.toException());
+         }
+     });
+
+
+ }else
+ {
+            Question firstQ=qList.get(questionPointer);
+            displayQuestionFunction(firstQ);
+        }
+
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -226,9 +261,16 @@ public class QuestionDisplayActivity extends AppCompatActivity implements Naviga
     }
 
     void loadModuleAndDisplay( String testPath ){
+
         if (qList.size()==0){
+            currentModulePath=testPath;
            // Intent i = getIntent();
             // testPath = (String)i.getSerializableExtra("TestPath");
+
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference("UserProgression/"+liu.user.name+liu.user.phone+"/CurrentModule");
+            myRef.setValue(currentModulePath);
+
             DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child(testPath);
 
             ref.addValueEventListener(new ValueEventListener(){
@@ -292,8 +334,15 @@ public class QuestionDisplayActivity extends AppCompatActivity implements Naviga
         Log.d("Inside Next clicked ", "Inside Next clicked before " + questionPointer  + " " + choiceArray[questionPointer] );
     }
     public void finishClicked(View view) {
+        //
+        if (qList.size()==0){
+            return;
+        }
+
+
         int moduleScore=0;
-for(int i=0;i<qList.size();i++){
+for(int i=0;i<qList.size();i++)
+{
     int ai=0;
     Question qi=qList.get(i);
     switch (qi.answer){
@@ -308,14 +357,24 @@ if(ai==choiceArray[i]){
 
 
 
+
 }
-        Context context = getApplicationContext();
-        CharSequence text = "Your Score In this Module : "+ moduleScore ;
+
+
+
+int currentScore=moduleScore*100/qList.size();
+Context context = getApplicationContext();
+        CharSequence text = "Your Score In this Module : "+ ( currentScore) ;
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
-
+//remove questions
+        qList.clear();
+        qKeyList.clear();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("UserProgression/"+liu.user.name+liu.user.phone+"/CompletedModules/"+currentModulePath);
+        myRef.setValue(currentScore);
 
     }
     public void backClicked(View view) {

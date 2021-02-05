@@ -2,12 +2,14 @@ package com.example.manifoldpscquizz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -65,6 +67,12 @@ public class LoginActivity extends AppCompatActivity {
                             break;
                         }else{
                             loadingProgressBar.setVisibility(view.INVISIBLE);
+                            Context context = getApplicationContext();
+                            CharSequence text = "Invalid Userid or Password" ;
+                            int duration = Toast.LENGTH_SHORT;
+
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.show();
                         }
 
                     }
