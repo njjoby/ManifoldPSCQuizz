@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.widget.ExpandableListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.internal.service.Common;
@@ -44,7 +45,7 @@ public class QuestionDisplayActivity extends AppCompatActivity implements Naviga
     public static ArrayList<Question> qList = new ArrayList<Question>();
     public static ArrayList<String> qKeyList = new ArrayList<String>();
     public static  String testPath ;
-    public   int choiceArray[];
+    public static    int choiceArray[];
     public  static Integer questionPointer;
     public String currentModulePath;
     public LogedInUser liu;
@@ -92,8 +93,13 @@ public class QuestionDisplayActivity extends AppCompatActivity implements Naviga
 
 
  }else
+
  {
-            Question firstQ=qList.get(questionPointer);
+
+     Log.w("TAG1",  "questionPointer "+ questionPointer);
+     Log.w("TAG1",  "choiceArray[questionPointer] "+ choiceArray[questionPointer]);
+
+     Question firstQ=qList.get(questionPointer);
             displayQuestionFunction(firstQ);
         }
 
@@ -258,6 +264,11 @@ public class QuestionDisplayActivity extends AppCompatActivity implements Naviga
         mathViewOptionC.setText("\\( \\mathbb {C .}  \\)"+ firstQ.option_c);
         mathViewOptionD.setText("\\( \\mathbb {D .}  \\)"+ firstQ.option_d);
 
+        TextView textViewStatus = findViewById(R.id.textViewStatus);
+        TextView textViewDescription = findViewById(R.id.textViewQuestionDescription);
+        TextView textViewBelongs = findViewById(R.id.textViewQuestionBelongs);
+        textViewDescription.setText(firstQ.descriptionIfAny);
+        textViewStatus.setText(" "+(questionPointer+1) + " / "+ qList.size());
     }
 
     void loadModuleAndDisplay( String testPath ){

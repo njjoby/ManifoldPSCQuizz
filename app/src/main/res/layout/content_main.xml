@@ -43,6 +43,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/textViewStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" / "
+        android:layout_marginBottom="32dp"
+        app:layout_constraintStart_toEndOf="@id/buttonBack"
+        app:layout_constraintEnd_toStartOf="@id/buttonNext"
+        app:layout_constraintBottom_toTopOf="@id/buttonFinish"
+        />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
@@ -97,6 +107,8 @@
                     android:onClick="onRadioButtonClicked"
                     android:text="D        " />
 
+
+
             </RadioGroup>
 
 
@@ -104,6 +116,7 @@
                 android:id="@+id/mathViewOptionB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
                 android:scrollbarAlwaysDrawHorizontalTrack="true"
                 android:scrollbarAlwaysDrawVerticalTrack="true"
                 app:layout_constraintTop_toBottomOf="@id/mathViewOptionA"
@@ -113,6 +126,7 @@
                 android:id="@+id/mathViewOptionC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
                 android:scrollbarAlwaysDrawHorizontalTrack="true"
                 android:scrollbarAlwaysDrawVerticalTrack="true"
                 app:layout_constraintTop_toBottomOf="@id/mathViewOptionB"
@@ -122,18 +136,40 @@
                 android:id="@+id/mathViewOptionD"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
                 android:scrollbarAlwaysDrawHorizontalTrack="true"
                 android:scrollbarAlwaysDrawVerticalTrack="true"
                 app:layout_constraintTop_toBottomOf="@id/mathViewOptionC"
                 auto:engine="MathJax" />
+            <TextView
+                android:id="@+id/textViewQuestionDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" $ "
+              android:textColor="@color/newColor1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
 
+                />
+            <TextView
+                android:id="@+id/textViewQuestionBelongs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" $ "
+                android:textColor="@color/newColor2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
             <io.github.kexanie.library.MathView
                 android:id="@+id/mathViewDisp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+
                 android:scrollbarAlwaysDrawHorizontalTrack="true"
                 android:scrollbarAlwaysDrawVerticalTrack="true"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewQuestionDescription"
                 auto:engine="MathJax" />
 
             <io.github.kexanie.library.MathView
@@ -150,10 +186,13 @@
                 android:id="@+id/mathViewOptionA"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
                 android:scrollbarAlwaysDrawHorizontalTrack="true"
                 android:scrollbarAlwaysDrawVerticalTrack="true"
                 app:layout_constraintTop_toBottomOf="@id/mathViewDisp"
                 auto:engine="MathJax"></io.github.kexanie.library.MathView>
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
