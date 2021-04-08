@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ManifoldPSCQuizz</string>
+    <string name="app_name">PSC Computer Science</string>
     <string name="no_account_yet_create_one">No Account yet? Create One</string>
     <string name="title_activity_question_display">QuestionDisplayActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

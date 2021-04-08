@@ -178,9 +178,12 @@
                 android:layout_height="150dp"
                 android:scrollbarAlwaysDrawHorizontalTrack="true"
                 android:scrollbarAlwaysDrawVerticalTrack="true"
+                android:visibility="visible"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/radio_group"
-                auto:engine="MathJax" />
+                auto:engine="MathJax"
+                auto:text="Answer : " />
 
             <io.github.kexanie.library.MathView
                 android:id="@+id/mathViewOptionA"

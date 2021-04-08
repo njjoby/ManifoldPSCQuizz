@@ -8,20 +8,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:318715132173:android:466cbcd5f61a2485a31844",
+        "mobilesdk_app_id": "1:318715132173:android:8872893cd53433a7a31844",
         "android_client_info": {
-          "package_name": "com.example.manifoldpscquizz"
+          "package_name": "com.dvinfosys.androidcustomnavigationdrawerusingexpandablelistview"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "318715132173-3dibcnvdlliovr4dkhi5bhkl5shtre88.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.manifoldpscquizz",
-            "certificate_hash": "e5893c43c29e6f512901230ba8f7fd97d2c6fb37"
-          }
-        },
         {
           "client_id": "318715132173-tphhnpbhhvhma28s4v1d59is5ji332qi.apps.googleusercontent.com",
           "client_type": 3
@@ -45,20 +37,12 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:318715132173:android:047661659e2943b9a31844",
+        "mobilesdk_app_id": "1:318715132173:android:b6e9bcd01d2da629a31844",
         "android_client_info": {
-          "package_name": "com.example.myapplicationnew"
+          "package_name": "com.example.addorreview"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "318715132173-g1j2r05c5nuei6h43ondac19indhvuf8.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.myapplicationnew",
-            "certificate_hash": "14882577f5a2796f9a7356c0a48625fef71ad898"
-          }
-        },
         {
           "client_id": "318715132173-tphhnpbhhvhma28s4v1d59is5ji332qi.apps.googleusercontent.com",
           "client_type": 3
@@ -82,20 +66,41 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:318715132173:android:805b5feca3c701b0a31844",
+        "mobilesdk_app_id": "1:318715132173:android:20997855a78e9b4ca31844",
         "android_client_info": {
-          "package_name": "com.example.quizzdisplay"
+          "package_name": "com.jobyProjects.manifoldpscquizz"
         }
       },
       "oauth_client": [
         {
-          "client_id": "318715132173-ntlmem9b6488bne6qs6f9ahoduqokmce.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.quizzdisplay",
-            "certificate_hash": "e5893c43c29e6f512901230ba8f7fd97d2c6fb37"
-          }
-        },
+          "client_id": "318715132173-tphhnpbhhvhma28s4v1d59is5ji332qi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWUTxE7LY9SKMFAnEDDeJN3P4lljuTcBU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318715132173-tphhnpbhhvhma28s4v1d59is5ji332qi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318715132173:android:2e88b168f4f56b48a31844",
+        "android_client_info": {
+          "package_name": "com.jobyProjects.pscquizz"
+        }
+      },
+      "oauth_client": [
         {
           "client_id": "318715132173-tphhnpbhhvhma28s4v1d59is5ji332qi.apps.googleusercontent.com",
           "client_type": 3

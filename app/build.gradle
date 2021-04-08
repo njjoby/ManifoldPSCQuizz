@@ -6,7 +6,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.example.manifoldpscquizz"
+        applicationId "com.jobyProjects.manifoldpscquizz"
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
