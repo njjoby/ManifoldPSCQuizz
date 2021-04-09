@@ -9,21 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_manifold_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name="com.jobyProjects.manifoldpscquizz.QuestionDisplayActivity"
-            android:label="@string/title_activity_question_display"
-            android:theme="@style/AppTheme.NoActionBar">
-
-
-        </activity>
-        <activity android:name="com.jobyProjects.manifoldpscquizz.SignUp"></activity>
-        <activity android:name="com.jobyProjects.manifoldpscquizz.LoginActivity">
+        <activity android:name=".Subject">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SubjectList" />
+        <activity
+            android:name=".QuestionDisplayActivity"
+            android:label="@string/title_activity_question_display"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SignUp" />
+        <activity android:name=".LoginActivity">
+
+        </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>
